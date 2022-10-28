@@ -47,7 +47,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 
-sequelize.sync({ force: true });
+sequelize.sync({ force: false });
 
 // force true 시 디비 날려버리고 새로만듭니다! 첫실행 후 꼭 false로 바꿔주기!
 
