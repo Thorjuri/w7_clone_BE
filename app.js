@@ -4,7 +4,7 @@ const port = 3000;
 const Router = require('./routes/index.js')
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-
+const db = require('./models');
 
 app.use(express.json());
 app.use(cookieParser())
@@ -17,7 +17,7 @@ app.use(cors({
 app.options('*', cors())
 
 
-app.use("/", Router);
+// app.use("/", Router);
 
 
 app.listen(port, () => {
