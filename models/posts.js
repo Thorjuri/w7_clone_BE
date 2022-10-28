@@ -30,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
                 unique: true,
                 allowNull: false,
             },
+            tutor: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             description: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -40,6 +44,10 @@ module.exports = (sequelize, DataTypes) => {
             },
             stack: {
                 type: DataTypes.STRING,
+                allowNull: false,
+            },
+            price: {
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
             thumbnail: {
