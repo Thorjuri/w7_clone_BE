@@ -3,7 +3,7 @@ require('dotenv').config();
   const development = {
     "username": process.env.DB_USERNAME,
     "password": process.env.DB_PASSWORD,
-    "database": "merge_test22",
+    "database": "7WEEK",
     "host": process.env.DB_ENDPOINT,
     "dialect": "mysql"
   };
