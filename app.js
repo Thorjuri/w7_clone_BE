@@ -1,14 +1,12 @@
 const express = require('express');
 const app = express();
-const port = 4000;
+const port = 3005;
 const Router = require('./routes/index');
 const errorHandlerMiddleware = require('./middlewares/error_handler_middleware');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const auth_middleware = require('./middlewares/auth_middleware');
 require('./models');
-const {Users} = require('./models');
-const { resourceLimits } = require('worker_threads');
 
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
@@ -25,15 +23,15 @@ app.use(
 
 app.options('*', cors());
 
-
 app.use('/', Router);
 app.use('/', errorHandlerMiddleware); // 에러 핸들러
 
-// WebSocket - 익명 다대다 채팅
-app.get('/chat', async(req, res) => {
-    res.locals.user = await Users.findOne({})
-    const loginId = res.locals.user.loginId
-    res.header({data : loginId})
+
+
+// WebSocket - 실시간 채팅 
+app.get('/chat', auth_middleware, async(req, res) => {
+    const loginId = res.locals.user.loginId  //현재 로그인된 유저의 loginId 도출
+    res.header('userId', loginId)  //응답 헤더에 넣어줌
     res.sendFile(__dirname + '/index.html');
 }); 
 
@@ -59,6 +57,3 @@ http.listen(port, () => {
     console.log(`${port}번 포트로 서버 실행`);
 });
 
-// app.listen(port, () => {
-//     console.log(port, '포트로 서버가 열렸어요!');
-// });
