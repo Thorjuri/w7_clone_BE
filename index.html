@@ -22,18 +22,19 @@
           <div class="card-header">
             1:1 채팅 상담
           </div>
+          <div class="card-footer">
+            <ul id="messages"></ul>
+          </div>
           <div class="card-body">
             <form action="">
               <div class="input-group mb-3">
-                <input type="text" class="form-control" id="m" autocomplete="off" />
+                <input type="text" style="width:50px; margin-right:7px; border-color: lightgrey; border-radius: 2px;" id="name" placeholder="이름" autocomplete="off">
+                <input type="text" class="form-control" id="m" placeholder="메세지" autocomplete="off" />
                 <div class="input-group-append">
                   <button id="msg-send" class="btn btn-primary" placeholder="message">Send</button>
                 </div>
               </div>
             </form>
-          </div>
-          <div class="card-footer">
-            <ul id="messages"></ul>
           </div>
         </div>
       </div>
@@ -52,8 +53,10 @@
         
         // 클라이언트에서 reuqest_message 프로토콜로 id='m' 의 input 값을 보낸다.
         $('#msg-send').click(() => {
-          socket.emit('request_message', $('#m').val());
+          const msg = `${$('#name').val()}:      ${$('#m').val()}`
+          socket.emit('request_message', msg);
           $('#m').val('');
+          $('#name').val('');
           return false; 
         });
 
