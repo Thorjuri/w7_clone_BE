@@ -28,7 +28,7 @@
           <div class="card-body">
             <form action="">
               <div class="input-group mb-3">
-                <input type="text" style="width:50px; margin-right:7px; border-color: lightgrey; border-radius: 2px;" id="name" placeholder="이름" autocomplete="off">
+                <!-- <input type="text" style="width:50px; margin-right:7px; border-color: lightgrey; border-radius: 2px;" id="name" placeholder="이름" autocomplete="off"> -->
                 <input type="text" class="form-control" id="m" placeholder="메세지" autocomplete="off" />
                 <div class="input-group-append">
                   <button id="msg-send" class="btn btn-primary" placeholder="message">Send</button>
@@ -47,16 +47,18 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
+      window.localStorage.setItem('username', "test11")  //서버측에서, 로그인 후 헤더에 loginId 함께 보내주면 해당값을 로컬스토리지에 저장하기
+      const username = window.localStorage.getItem('username') //채팅 api 요청 시, 로컬스토리지의 해당 loginId 불러오기 
+
       $(() => {
         /** Socket Starts **/
         const socket = io();
-        
+       
         // 클라이언트에서 reuqest_message 프로토콜로 id='m' 의 input 값을 보낸다.
         $('#msg-send').click(() => {
-          const msg = `${$('#name').val()}:      ${$('#m').val()}`
+          const msg = `${username}:      ${$('#m').val()}`  //채팅 메시지 'Send' 요청시, 위 로컬스토리지에서 불러온 loginId를 자동으로 할당
           socket.emit('request_message', msg);
           $('#m').val('');
-          $('#name').val('');
           return false; 
         });
 

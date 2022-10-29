@@ -5,7 +5,10 @@ const Router = require('./routes/index');
 const errorHandlerMiddleware = require('./middlewares/error_handler_middleware');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const auth_middleware = require('./middlewares/auth_middleware');
 require('./models');
+const {Users} = require('./models');
+const { resourceLimits } = require('worker_threads');
 
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
@@ -16,22 +19,24 @@ app.use(cookieParser());
 app.use(
     cors({
         origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
-        exposedHeaders: 'Authorization',
+        exposedHeaders: 'Authorization', 
     })
 );
 
 app.options('*', cors());
 
+
 app.use('/', Router);
 app.use('/', errorHandlerMiddleware); // 에러 핸들러
 
 // WebSocket - 익명 다대다 채팅
-app.get('/chat', (req, res) => {
-    res.header({"name" : "thor"}) //객체로
-    console.log(res.locals.userId)
+app.get('/chat', async(req, res) => {
+    res.locals.user = await Users.findOne({})
+    const loginId = res.locals.user.loginId
+    res.header({data : loginId})
     res.sendFile(__dirname + '/index.html');
-    
 }); 
+
 
 io.on('connection', (socket)=>{
     socket.on('request_message', (msg) => {
