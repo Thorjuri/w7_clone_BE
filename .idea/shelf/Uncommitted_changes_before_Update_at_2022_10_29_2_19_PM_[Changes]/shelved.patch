@@ -1,0 +1,322 @@
+Index: app.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const express = require('express');\nconst app = express();\nconst port = 3000;\nconst Router = require('./routes/index.js');\nconst errorHandlerMiddleware = require('./middlewares/error_handler_middleware')\nconst cookieParser = require('cookie-parser');\nconst cors = require('cors');\nrequire('./models');\n\napp.use(express.json());\napp.use(cookieParser());\n\napp.use(\n    cors({\n        origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.\n        exposedHeaders: 'Authorization',\n    })\n);\n\napp.options('*', cors());\n\napp.use(\"/\", Router);\napp.use('/' ,errorHandlerMiddleware); // 에러 핸들러\n\n\napp.listen(port, () => {\n    console.log(port, '포트로 서버가 열렸어요!');\n});\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app.js b/app.js
+--- a/app.js	(revision 74ee8edb2de74b48fdcf3214e59876148bc860eb)
++++ b/app.js	(date 1666968684287)
+@@ -1,12 +1,13 @@
+ const express = require('express');
+ const app = express();
+ const port = 3000;
+-const Router = require('./routes/index.js');
+-const errorHandlerMiddleware = require('./middlewares/error_handler_middleware')
++const Router = require('./routes/index');
++const errorHandlerMiddleware = require('./middlewares/error_handler_middleware');
+ const cookieParser = require('cookie-parser');
+ const cors = require('cors');
+ require('./models');
+ 
++console.log('app.js')
+ app.use(express.json());
+ app.use(cookieParser());
+ 
+@@ -19,10 +20,9 @@
+ 
+ app.options('*', cors());
+ 
+-app.use("/", Router);
+-app.use('/' ,errorHandlerMiddleware); // 에러 핸들러
++app.use('/', Router);
++app.use('/', errorHandlerMiddleware); // 에러 핸들러
+ 
+-
+ app.listen(port, () => {
+     console.log(port, '포트로 서버가 열렸어요!');
+ });
+Index: services/likesService.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/services/likesService.js b/services/likesService.js
+--- a/services/likesService.js	(revision 74ee8edb2de74b48fdcf3214e59876148bc860eb)
++++ b/services/likesService.js	(date 1666971535996)
+@@ -1,0 +1,13 @@
++const LikeRepository = require('../repositories/likesRepository');
++
++class LikesService {
++    likeRepository = new LikeRepository();
++
++    updateLike = async (postId, userId) => {
++        const likeResult = await this.likeRepository.updateLike(postId, userId);
++        console.log(likeResult)
++        return likeResult;
++    };
++}
++
++module.exports = LikesService;
+Index: controllers/likesController.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/controllers/likesController.js b/controllers/likesController.js
+--- a/controllers/likesController.js	(revision 74ee8edb2de74b48fdcf3214e59876148bc860eb)
++++ b/controllers/likesController.js	(date 1666971584990)
+@@ -1,0 +1,19 @@
++const LikesService = require('../services/likesService');
++
++class LikesController {
++    likeService = new LikesService();
++
++    updateLike = async (req, res, next) => {
++        try {
++            const { postId } = req.params;
++            const { userId } = req.body;
++            // const { userId } = res.locals.userId;
++            const result = await this.likeService.updateLike(postId, userId);
++            res.status(200).send(result)
++        } catch (err) {
++            next();
++        }
++    };
++}
++
++module.exports = LikesController;
+Index: middlewares/error_handler_middleware.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\nmodule.exports = (err, req, res, next) => {\n    // 에러핸들러에서 에러가 난 장소를 추적해와서 콘솔로그를 찍을 수 있을것 같은데..\n    // 에러의 속성에 따른 구분을 해야한다\n    return res.status(400).json({ type: err.name, error: err.message });\n};
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/middlewares/error_handler_middleware.js b/middlewares/error_handler_middleware.js
+--- a/middlewares/error_handler_middleware.js	(revision 74ee8edb2de74b48fdcf3214e59876148bc860eb)
++++ b/middlewares/error_handler_middleware.js	(date 1666943894209)
+@@ -3,4 +3,4 @@
+     // 에러핸들러에서 에러가 난 장소를 추적해와서 콘솔로그를 찍을 수 있을것 같은데..
+     // 에러의 속성에 따른 구분을 해야한다
+     return res.status(400).json({ type: err.name, error: err.message });
+-};
+\ No newline at end of file
++};
+Index: repositories/likesRepository.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/repositories/likesRepository.js b/repositories/likesRepository.js
+--- a/repositories/likesRepository.js	(revision 74ee8edb2de74b48fdcf3214e59876148bc860eb)
++++ b/repositories/likesRepository.js	(date 1666972321261)
+@@ -1,0 +1,15 @@
++const { Likes } = require('../models');
++
++class LikesRepository {
++    updateLike = async (postId, userId) => {
++        const checkData = await Likes.findOne({ where: { postId, userId } });
++        if (checkData) {
++            await Likes.destroy({ where: { postId, userId } });
++        } else {
++            await Likes.create({ postId, userId });
++        }
++        return checkData ? false : true; // checkData가 true면 없앴기 때문에 fasle 반환.
++    };
++}
++
++module.exports = LikesRepository;
+Index: models/likes.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>'use strict';\nconst { Model } = require('sequelize');\nmodule.exports = (sequelize, DataTypes) => {\n    class Likes extends Model {\n        /**\n         * Helper method for defining associations.\n         * This method is not a part of Sequelize lifecycle.\n         * The `models/index` file will call this method automatically.\n         */\n        static associate(models) {\n            Likes.belongsTo(models.Users, {\n                foreignKey: 'userId',\n                targetKey: 'userId',\n                onDelete: 'CASCADE',\n            });\n            Likes.belongsTo(models.Posts, {\n                foreignKey: 'postId',\n                targetKey: 'postId',\n                onDelete: 'CASCADE',\n            });\n        }\n    }\n    Likes.init(\n        {\n            likeId: {\n                primaryKey: true,\n                autoIncrement: true,\n                type: DataTypes.INTEGER,\n            },\n            userId: {\n                type: DataTypes.INTEGER,\n                allowNull: false,\n            },\n            postId: {\n                type: DataTypes.INTEGER,\n                allowNull: false,\n            },\n        },\n        {\n            sequelize,\n            modelName: 'Likes',\n            timestamps: true,\n            paranoid: true,\n        }\n    );\n    return Likes;\n};\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/models/likes.js b/models/likes.js
+--- a/models/likes.js	(revision 74ee8edb2de74b48fdcf3214e59876148bc860eb)
++++ b/models/likes.js	(date 1666970908295)
+@@ -40,7 +40,7 @@
+             sequelize,
+             modelName: 'Likes',
+             timestamps: true,
+-            paranoid: true,
++            paranoid: false,
+         }
+     );
+     return Likes;
+Index: models/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>'use strict';\n\nconst fs = require('fs');\nconst path = require('path');\nconst Sequelize = require('sequelize');\nconst process = require('process');\nconst basename = path.basename(__filename);\nconst env = process.env.NODE_ENV || 'development';\nconst config = require(__dirname + '/../config/config.js')[env];\nconst db = {};\n\nlet sequelize;\nif (config.use_env_variable) {\n    sequelize = new Sequelize(process.env[config.use_env_variable], config);\n} else {\n    sequelize = new Sequelize(\n        config.database,\n        config.username,\n        config.password,\n        config\n    );\n}\n\nfs.readdirSync(__dirname)\n    .filter((file) => {\n        return (\n            file.indexOf('.') !== 0 &&\n            file !== basename &&\n            file.slice(-3) === '.js'\n        );\n    })\n    .forEach((file) => {\n        const model = require(path.join(__dirname, file))(\n            sequelize,\n            Sequelize.DataTypes\n        );\n        db[model.name] = model;\n    });\n\nObject.keys(db).forEach((modelName) => {\n    if (db[modelName].associate) {\n        db[modelName].associate(db);\n    }\n});\n\ndb.sequelize = sequelize;\ndb.Sequelize = Sequelize;\n\n\nsequelize.sync({ force: true });\n\n// force true 시 디비 날려버리고 새로만듭니다! 첫실행 후 꼭 false로 바꿔주기!\n\nmodule.exports = db;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/models/index.js b/models/index.js
+--- a/models/index.js	(revision 74ee8edb2de74b48fdcf3214e59876148bc860eb)
++++ b/models/index.js	(date 1666971008320)
+@@ -47,7 +47,7 @@
+ db.Sequelize = Sequelize;
+ 
+ 
+-sequelize.sync({ force: true });
++sequelize.sync({ force: false });
+ 
+ // force true 시 디비 날려버리고 새로만듭니다! 첫실행 후 꼭 false로 바꿔주기!
+ 
+Index: routes/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const express = require('express');\nconst router = express.Router();\nconst postsRouter = require('./posts.js');\nconst usersRouter = require('./users.js');\nconst bucketsRouter = require('./buckets.js');\nconst likesRouter = require('./likes.js');\n\n\n//전역 미들웨어\n\n// router.use(\"/posts\", postsRouter);\nrouter.use(\"/users\", usersRouter);\n// router.use(\"/buckets\", bucketsRouter);\n// router.use(\"/likes\", likesRouter);\n\n\nmodule.exports = router;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/routes/index.js b/routes/index.js
+--- a/routes/index.js	(revision 74ee8edb2de74b48fdcf3214e59876148bc860eb)
++++ b/routes/index.js	(date 1666968684285)
+@@ -3,15 +3,13 @@
+ const postsRouter = require('./posts.js');
+ const usersRouter = require('./users.js');
+ const bucketsRouter = require('./buckets.js');
+-const likesRouter = require('./likes.js');
+-
++const likesRouter = require('./likes');
+ 
+ //전역 미들웨어
+-
++console.log("index.js")
+ // router.use("/posts", postsRouter);
+-router.use("/users", usersRouter);
++router.use('/users', usersRouter);
+ // router.use("/buckets", bucketsRouter);
+-// router.use("/likes", likesRouter);
++router.use('/likes', likesRouter);
+ 
+-
+-module.exports = router;
+\ No newline at end of file
++module.exports = router;
+Index: routes/likes.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/routes/likes.js b/routes/likes.js
+--- a/routes/likes.js	(revision 74ee8edb2de74b48fdcf3214e59876148bc860eb)
++++ b/routes/likes.js	(date 1666969087159)
+@@ -1,0 +1,11 @@
++const express = require('express');
++const router = express.Router();
++const LikesController = require('../controllers/likesController');
++const AuthMiddleware = require('../middlewares/auth_middleware');
++
++console.log('likes.js')
++const likesController = new LikesController();
++
++router.patch('/:postId', likesController.updateLike);
++
++module.exports = router;
+Index: .prettierrc.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module.exports = {\n    trailingComma: 'es5', // 콤마 설정\n    tabWidth: 4, // 탭 띄어쓰기 횟수\n    semi: true, // 세미콜론 붙이기\n    singleQuote: true,\n    arrowParens: 'always',\n    };
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.prettierrc.js b/.prettierrc.js
+--- a/.prettierrc.js	(revision 74ee8edb2de74b48fdcf3214e59876148bc860eb)
++++ b/.prettierrc.js	(date 1666943894207)
+@@ -4,4 +4,4 @@
+     semi: true, // 세미콜론 붙이기
+     singleQuote: true,
+     arrowParens: 'always',
+-    };
+\ No newline at end of file
++};
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1666943894201)
++++ b/.idea/modules.xml	(date 1666943894201)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/w7_clone_BE.iml" filepath="$PROJECT_DIR$/.idea/w7_clone_BE.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.xml b/.idea/dataSources.xml
+new file mode 100644
+--- /dev/null	(date 1666943894199)
++++ b/.idea/dataSources.xml	(date 1666943894199)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
++    <data-source source="LOCAL" name="@127.0.0.1" uuid="ff078bbf-dda5-48eb-a024-e6738468c0b9">
++      <driver-ref>mysql.8</driver-ref>
++      <synchronize>true</synchronize>
++      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
++      <jdbc-url>jdbc:mysql://127.0.0.1:3306</jdbc-url>
++      <working-dir>$ProjectFileDir$</working-dir>
++    </data-source>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/w7_clone_BE.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/w7_clone_BE.iml b/.idea/w7_clone_BE.iml
+new file mode 100644
+--- /dev/null	(date 1666943894205)
++++ b/.idea/w7_clone_BE.iml	(date 1666943894205)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="WEB_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/temp" />
++      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
++      <excludeFolder url="file://$MODULE_DIR$/tmp" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1666943894204)
++++ b/.idea/vcs.xml	(date 1666943894204)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
