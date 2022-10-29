@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 4000;
 const Router = require('./routes/index');
 const errorHandlerMiddleware = require('./middlewares/error_handler_middleware');
 const cookieParser = require('cookie-parser');
@@ -27,8 +27,11 @@ app.use('/', errorHandlerMiddleware); // 에러 핸들러
 
 // WebSocket - 익명 다대다 채팅
 app.get('/chat', (req, res) => {
+    res.header({"name" : "thor"}) //객체로
+    console.log(res.locals.userId)
     res.sendFile(__dirname + '/index.html');
-});
+    
+}); 
 
 io.on('connection', (socket)=>{
     socket.on('request_message', (msg) => {
