@@ -8,7 +8,7 @@ const likesRouter = require('./likes.js');
 
 //전역 미들웨어
 
-// router.use("/posts", postsRouter);
+router.use("/posts", postsRouter);
 router.use("/users", usersRouter);
 // router.use("/buckets", bucketsRouter);
 // router.use("/likes", likesRouter);
