@@ -1,0 +1,287 @@
+Index: app.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const express = require('express');\nconst app = express();\nconst port = 3000;\nconst Router = require('./routes/index.js')\nconst cookieParser = require('cookie-parser');\nconst cors = require('cors');\nconst db = require('./models');\n\napp.use(express.json());\napp.use(cookieParser())\n\napp.use(cors({\n  origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.\n  exposedHeaders: \"Authorization\"\n}));\n\napp.options('*', cors())\n\n\n// app.use(\"/\", Router);\n\n\napp.listen(port, () => {\n  console.log(port, '포트로 서버가 열렸어요!');\n});\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app.js b/app.js
+--- a/app.js	(revision c47e2b5b848c7962e00ee1defdc75d751f9d8317)
++++ b/app.js	(date 1666941123951)
+@@ -1,25 +1,25 @@
+ const express = require('express');
+ const app = express();
+ const port = 3000;
+-const Router = require('./routes/index.js')
++const Router = require('./routes/index.js');
+ const cookieParser = require('cookie-parser');
+ const cors = require('cors');
+ const db = require('./models');
+ 
+ app.use(express.json());
+-app.use(cookieParser())
++app.use(cookieParser());
+ 
+-app.use(cors({
+-  origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
+-  exposedHeaders: "Authorization"
+-}));
++app.use(
++    cors({
++        origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
++        exposedHeaders: 'Authorization',
++    })
++);
+ 
+-app.options('*', cors())
+-
++app.options('*', cors());
+ 
+ // app.use("/", Router);
+ 
+-
+ app.listen(port, () => {
+-  console.log(port, '포트로 서버가 열렸어요!');
++    console.log(port, '포트로 서버가 열렸어요!');
+ });
+Index: middlewares/auth_middleware.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>const dotenv = require(\"dotenv\");\ndotenv.config(`${process.env.SECRET_KEY}`);\n\nconst jwt = require('jsonwebtoken');\nconst { Users } = require(\"../models\");\n\nmodule.exports = async (req, res, next) => {\n    const { authorization } = req.headers;\n\n    const [authType, authToken] = (authorization || \"\").split(\" \");\n\n    if(!authToken || authType !== \"Bearer\") {\n        res.status(401).send({\n            errorMessage: \"로그인이 필요한 기능입니다.\",\n        });\n        return;\n    }\n\n   try {\n        const { userId } = jwt.verify(authToken, `${process.env.SECRET_KEY}`);\n        \n        Users.findOne({where: {userId}}).then((user) => {\n            res.locals.user = user;\n            next();\n        });\n    } catch (err) {\n        res.status(400).json({errorMessage: \"로그인이 필요합니다.\" });\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/middlewares/auth_middleware.js b/middlewares/auth_middleware.js
+--- a/middlewares/auth_middleware.js	(revision c47e2b5b848c7962e00ee1defdc75d751f9d8317)
++++ b/middlewares/auth_middleware.js	(date 1666941123954)
+@@ -1,29 +1,29 @@
+-const dotenv = require("dotenv");
++const dotenv = require('dotenv');
+ dotenv.config(`${process.env.SECRET_KEY}`);
+ 
+ const jwt = require('jsonwebtoken');
+-const { Users } = require("../models");
++const { Users } = require('../models');
+ 
+ module.exports = async (req, res, next) => {
+     const { authorization } = req.headers;
+ 
+-    const [authType, authToken] = (authorization || "").split(" ");
++    const [authType, authToken] = (authorization || '').split(' ');
+ 
+-    if(!authToken || authType !== "Bearer") {
++    if (!authToken || authType !== 'Bearer') {
+         res.status(401).send({
+-            errorMessage: "로그인이 필요한 기능입니다.",
++            errorMessage: '로그인이 필요한 기능입니다.',
+         });
+         return;
+     }
+ 
+-   try {
++    try {
+         const { userId } = jwt.verify(authToken, `${process.env.SECRET_KEY}`);
+-        
+-        Users.findOne({where: {userId}}).then((user) => {
++
++        Users.findOne({ where: { userId } }).then((user) => {
+             res.locals.user = user;
+             next();
+         });
+     } catch (err) {
+-        res.status(400).json({errorMessage: "로그인이 필요합니다." });
++        res.status(400).json({ errorMessage: '로그인이 필요합니다.' });
+     }
+-}
+\ No newline at end of file
++};
+Index: models/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>'use strict';\n\nconst fs = require('fs');\nconst path = require('path');\nconst Sequelize = require('sequelize');\nconst process = require('process');\nconst basename = path.basename(__filename);\nconst env = process.env.NODE_ENV || 'development';\nconst config = require(__dirname + '/../config/config.js')[env];\nconst db = {};\n\nlet sequelize;\nif (config.use_env_variable) {\n  sequelize = new Sequelize(process.env[config.use_env_variable], config);\n} else {\n  sequelize = new Sequelize(config.database, config.username, config.password, config);\n}\n\nfs\n  .readdirSync(__dirname)\n  .filter(file => {\n    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');\n  })\n  .forEach(file => {\n    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);\n    db[model.name] = model;\n  });\n\nObject.keys(db).forEach(modelName => {\n  if (db[modelName].associate) {\n    db[modelName].associate(db);\n  }\n});\n\ndb.sequelize = sequelize;\ndb.Sequelize = Sequelize;\n\nsequelize.sync ({force:true});\n// force true 시 디비 날려버리고 새로만듭니다! 첫실행 후 꼭 false로 바꿔주기!\n\nmodule.exports = db;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/models/index.js b/models/index.js
+--- a/models/index.js	(revision c47e2b5b848c7962e00ee1defdc75d751f9d8317)
++++ b/models/index.js	(date 1666941253325)
+@@ -11,31 +11,42 @@
+ 
+ let sequelize;
+ if (config.use_env_variable) {
+-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
++    sequelize = new Sequelize(process.env[config.use_env_variable], config);
+ } else {
+-  sequelize = new Sequelize(config.database, config.username, config.password, config);
++    sequelize = new Sequelize(
++        config.database,
++        config.username,
++        config.password,
++        config
++    );
+ }
+ 
+-fs
+-  .readdirSync(__dirname)
+-  .filter(file => {
+-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+-  })
+-  .forEach(file => {
+-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+-    db[model.name] = model;
+-  });
++fs.readdirSync(__dirname)
++    .filter((file) => {
++        return (
++            file.indexOf('.') !== 0 &&
++            file !== basename &&
++            file.slice(-3) === '.js'
++        );
++    })
++    .forEach((file) => {
++        const model = require(path.join(__dirname, file))(
++            sequelize,
++            Sequelize.DataTypes
++        );
++        db[model.name] = model;
++    });
+ 
+-Object.keys(db).forEach(modelName => {
+-  if (db[modelName].associate) {
+-    db[modelName].associate(db);
+-  }
++Object.keys(db).forEach((modelName) => {
++    if (db[modelName].associate) {
++        db[modelName].associate(db);
++    }
+ });
+ 
+ db.sequelize = sequelize;
+ db.Sequelize = Sequelize;
+ 
+-sequelize.sync ({force:true});
++sequelize.sync({ force: false });
+ // force true 시 디비 날려버리고 새로만듭니다! 첫실행 후 꼭 false로 바꿔주기!
+ 
+ module.exports = db;
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1666941123955)
++++ b/.idea/modules.xml	(date 1666941123955)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/w7_clone_BE.iml" filepath="$PROJECT_DIR$/.idea/w7_clone_BE.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.xml b/.idea/dataSources.xml
+new file mode 100644
+--- /dev/null	(date 1666941123957)
++++ b/.idea/dataSources.xml	(date 1666941123957)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
++    <data-source source="LOCAL" name="@127.0.0.1" uuid="ff078bbf-dda5-48eb-a024-e6738468c0b9">
++      <driver-ref>mysql.8</driver-ref>
++      <synchronize>true</synchronize>
++      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
++      <jdbc-url>jdbc:mysql://127.0.0.1:3306</jdbc-url>
++      <working-dir>$ProjectFileDir$</working-dir>
++    </data-source>
++  </component>
++</project>
+\ No newline at end of file
+Index: .prettierrc.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.prettierrc.js b/.prettierrc.js
+new file mode 100644
+--- /dev/null	(date 1666941123956)
++++ b/.prettierrc.js	(date 1666941123956)
+@@ -0,0 +1,7 @@
++module.exports = {
++    trailingComma: 'es5', // 콤마 설정
++    tabWidth: 4, // 탭 띄어쓰기 횟수
++    semi: true, // 세미콜론 붙이기
++    singleQuote: true,
++    arrowParens: 'always',
++};
+\ No newline at end of file
+Index: .idea/w7_clone_BE.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/w7_clone_BE.iml b/.idea/w7_clone_BE.iml
+new file mode 100644
+--- /dev/null	(date 1666941123959)
++++ b/.idea/w7_clone_BE.iml	(date 1666941123959)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="WEB_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/temp" />
++      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
++      <excludeFolder url="file://$MODULE_DIR$/tmp" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1666941123958)
++++ b/.idea/vcs.xml	(date 1666941123958)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: middlewares/error_handler_middleware.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>module.exports = (err, req, res, next) => {\r\n\r\n    // 에러핸들러에서 에러가 난 장소를 추적해와서 콘솔로그를 찍을 수 있을것 같은데..\r\n    // 에러의 속성에 따른 구분을 해야한다\r\n    return res.status(400).json({ type: err.name, error: err.message });\r\n  };\r\n  \r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/middlewares/error_handler_middleware.js b/middlewares/error_handler_middleware.js
+--- a/middlewares/error_handler_middleware.js	(revision c47e2b5b848c7962e00ee1defdc75d751f9d8317)
++++ b/middlewares/error_handler_middleware.js	(date 1666941149293)
+@@ -1,7 +1,5 @@
+ module.exports = (err, req, res, next) => {
+-
+     // 에러핸들러에서 에러가 난 장소를 추적해와서 콘솔로그를 찍을 수 있을것 같은데..
+     // 에러의 속성에 따른 구분을 해야한다
+     return res.status(400).json({ type: err.name, error: err.message });
+-  };
+-  
++};
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
