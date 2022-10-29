@@ -4,4 +4,4 @@ module.exports = {
     semi: true, // 세미콜론 붙이기
     singleQuote: true,
     arrowParens: 'always',
-    };
+};

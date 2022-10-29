@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const Router = require('./routes/index.js');
-const errorHandlerMiddleware = require('./middlewares/error_handler_middleware')
+const Router = require('./routes/index');
+const errorHandlerMiddleware = require('./middlewares/error_handler_middleware');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 require('./models');
@@ -22,9 +22,8 @@ app.use(
 
 app.options('*', cors());
 
-app.use("/", Router);
-app.use('/' ,errorHandlerMiddleware); // 에러 핸들러
-
+app.use('/', Router);
+app.use('/', errorHandlerMiddleware); // 에러 핸들러
 
 // WebSocket - 익명 다대다 채팅
 app.get('/chat', (req, res) => {
