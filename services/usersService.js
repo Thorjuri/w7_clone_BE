@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken'); // 토큰 모듈
+const PostsController = require('../controllers/postsController');
+const { Posts } = require("../models")
 
 require('dotenv').config(); // 닷 env
 
@@ -52,15 +54,58 @@ class UserService {
     };
 
     getLikesList = async (userId) => {
-        const option = { where: { userId } };
+        const option = {
+            where: { userId },
+            attributes:["postId","userId"],
+            include:{
+                model:Posts,
+                attributes:{exclude:["postId","createdAt","deletedAt"]} 
+            }
+        };
         const likeslist = await this.UserRepository.getLikesList(option);
-        return likeslist;
+            
+        return likeslist.map((post)=>  {
+            return {
+                "userId":post.userId,
+                "postId":post.postId,
+                "title":post.Post.title,
+                "tuter":post.Post.tutor,
+                "description":post.Post.description,
+                "category":post.Post.category,
+                "stack":post.Post.category,
+                "price":post.Post.price,
+                "thumbnail":post.Post.thumbnail,
+                "updatedAt":post.Post.updatedAt
+            }
+           
+        });
     };
 
     getBucketsList = async (userId) => {
-        const option = { where: { userId } };
+        const option = {
+            where: { userId },
+            attributes:["postId","userId"],
+            include:{
+                model:Posts,
+                attributes:{exclude:["postId","createdAt","deletedAt"]} 
+            }
+        };
         const bucketslist = await this.UserRepository.getBucketsList(option);
-        return bucketslist;
+        return bucketslist.map((post)=>  {
+            return {
+                "userId":post.userId,
+                "postId":post.postId,
+                "title":post.Post.title,
+                "tuter":post.Post.tutor,
+                "description":post.Post.description,
+                "category":post.Post.category,
+                "stack":post.Post.category,
+                "price":post.Post.price,
+                "thumbnail":post.Post.thumbnail,
+                "updatedAt":post.Post.updatedAt
+            }
+           
+        });
     };
 }
 
