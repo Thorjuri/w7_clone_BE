@@ -31,7 +31,7 @@ class UserService {
     checkId = async (loginId) => {
         const findOption = { where: { loginId } };
         const findUser = await this.UserRepository.findUser(findOption);
-        if (findUser) throw Error('해당 아이디는 사용할 수 없습니다');
+        if (findUser) throw new Error('해당 아이디는 사용할 수 없습니다');
         else return findUser;
     };
 
@@ -44,7 +44,7 @@ class UserService {
             const match = bcrypt.compareSync(password, loginUser.password); // 재 암호화 후 동일 시 불리언 반환
             if (match) {
                 const token = jwt.sign(
-                    { userId: loginUser.userId },
+                    { userId: loginUser.userId , loginId:loginUser.loginId },
                     process.env.SECRET_KEY,
                     { expiresIn: '24h' }
                 );
