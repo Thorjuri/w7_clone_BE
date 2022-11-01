@@ -1,8 +1,10 @@
 
 module.exports = (err, req, res, next) => {
-    console.log(err)
-    return res.status(400).json({     
+    // fetch('/likes/:postId').catch(console.log('fetcherr'))
+    res.status(err.statusCode).json({
         type: err.name,
-        error: err.message        
-     });
+        redirect: err.redirected,
+        errorMessage: err.message,
+        url: err.url,
+    });
 };
