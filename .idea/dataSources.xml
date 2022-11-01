@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://127.0.0.1:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="rds_7week" uuid="6f42945f-c335-45b7-a22e-6cef5f2b23da">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://expressdb.chy8ifd8tcym.ap-northeast-2.rds.amazonaws.com:3306</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

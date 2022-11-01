@@ -4,8 +4,6 @@ const router = express.Router();
 const PostsController = require('../controllers/postsController.js');
 const postController = new PostsController();
 
-const authMiddleware = require('../middlewares/auth_middleware.js');
-
 // 1. 강의 목록 전체조회
 router.get('/', postController.getPostAll);
 
