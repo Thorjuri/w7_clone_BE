@@ -16,6 +16,11 @@ class PostsRepository {
         const data = await Posts.findAll({ where: { category, stack}});
         return data;
     };
+
+    createPost = async(post)=> {
+        const data = await Posts.create(post)
+        return data;
+    }
 };
 
 module.exports = PostsRepository;

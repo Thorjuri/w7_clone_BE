@@ -8,11 +8,15 @@
 </head>
 <body>
     
-    <Form action="/post/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" />
-        <input type="text" name="title" />
+    <Form action="/posts/write" method="post" enctype="multipart/form-data">
+       사진(url): <input type="file" name="image" /> <br>
+        제목: <input type="text" name="title" /><br>
+        설명: <input type="text" name="description" /><br>
+        강사: <input type="text" name="tutor" /><br>
+        카테고리: <input type="text" name="category" /><br>
+        스택: <input type="text" name="stack" /><br>
+        가격: <input type="text" name="price" /><br>
         <button type="submit"> 사진업로드 </button>
     </Form>
-
 </body>
 </html>

@@ -21,6 +21,11 @@ class PostsService {
         return data;
     };
 
+    createPost = async(post)=> {
+        const data = await this.postsRepository.createPost(post);
+        return data;
+    };
+
 };
 
 module.exports = PostsService;
