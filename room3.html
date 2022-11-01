@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
     <title>Socket Tester</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -14,13 +14,13 @@
     </style>
   </head>
   <body>
-    <div class="row">
+    <div class="row"> 
 
-      <!-- 대기실 -->
+      <!-- 대기실 --> 
       <div class="col-lg-4">
         <div class="card">
           <div class="card-header">
-            1:1 채팅 상담(1번방)
+            1:1 채팅 상담(3번방)
           </div>
           <div class="card-footer">
             <ul id="messages"></ul>
@@ -49,8 +49,8 @@
     
     
     <script>
-      window.localStorage.setItem('username1', "test1")  //서버측에서, 로그인 후 헤더에 loginId 함께 보내주면 해당값을 로컬스토리지에 저장하기
-      const username1 = window.localStorage.getItem('username1') //채팅 api 요청 시, 로컬스토리지의 해당 loginId 불러오기 
+      window.localStorage.setItem('username3', "test3")  //서버측에서, 로그인 후 헤더에 loginId 함께 보내주면 해당값을 로컬스토리지에 저장하기
+      const username3 = window.localStorage.getItem('username3') //채팅 api 요청 시, 로컬스토리지의 해당 loginId 불러오기 
 
       $(() => { 
         /** Socket Starts **/
@@ -58,14 +58,14 @@
        
         // 클라이언트에서 reuqest_message 프로토콜로 id='m' 의 input 값을 보낸다.
         $('#msg-send').click(() => {
-          const msg = `${username1}:      ${$('#m').val()}`  //채팅 메시지 'Send' 요청시, 위 로컬스토리지에서 불러온 loginId를 자동으로 할당
-          socket.emit('room1', msg);  //해당 창구를 가진 모두에게 msg 전송
+          const msg = `${username3}:      ${$('#m').val()}`  //채팅 메시지 'Send' 요청시, 위 로컬스토리지에서 불러온 loginId를 자동으로 할당
+          socket.emit('room3', msg);
           $('#m').val('');
           return false; 
         });
 
-        socket.on('response_message', (res) => {  //해당 창구로부터 온 msg를 받음
-          $('#messages').prepend($('<li>').text(res));
+        socket.on('room_all', (res) => {
+          $('#messages').append($('<li>').text(res));
         });
 
       });
