@@ -15,14 +15,12 @@ class UserService {
         const findUser = await this.UserRepository.findUser(findOption);
 
         if (!findUser) {
-            const hashedPw = bcrypt.hashSync(password, 10); // 암호화
-            password = hashedPw;
+            password = bcrypt.hashSync(password, 10); // 암호화
 
             const createOption = { loginId, password };
-            const signUpUser = await this.UserRepository.signUpUser(
+            return await this.UserRepository.signUpUser(
                 createOption
             );
-            return signUpUser;
         } else throw new Error('데이터 저장 과정 중 에러 발생');
     };
 
@@ -41,26 +39,23 @@ class UserService {
         } else {
             const match = bcrypt.compareSync(password, loginUser.password); // 재 암호화 후 동일 시 불리언 반환
             if (match) {
-                const token = jwt.sign(
+                return jwt.sign(
                     { userId: loginUser.userId },
                     process.env.SECRET_KEY,
                     { expiresIn: '24h' }
                 );
-                return token;
             } else throw new Error('아이디 또는 비밀번호가 다릅니다');
         }
     };
 
     getLikesList = async (userId) => {
         const option = { where: { userId } };
-        const likeslist = await this.UserRepository.getLikesList(option);
-        return likeslist;
+        return await this.UserRepository.getLikesList(option);
     };
 
     getBucketsList = async (userId) => {
         const option = { where: { userId } };
-        const bucketslist = await this.UserRepository.getBucketsList(option);
-        return bucketslist;
+        return await this.UserRepository.getBucketsList(option);
     };
 }
 

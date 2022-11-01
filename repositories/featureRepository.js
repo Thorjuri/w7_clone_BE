@@ -1,5 +1,4 @@
 const { Likes, Buckets } = require('../models');
-const fetch = require('node-fetch');
 
 class FeatureRepository {
     updateLike = async (option) => {

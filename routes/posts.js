@@ -2,16 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 const PostsController = require('../controllers/postsController.js');
+const wrapAsyncController = require('../middlewares/wrapAsyncController');
 const postController = new PostsController();
 
 // 1. 강의 목록 전체조회
-router.get('/', postController.getPostAll);
+router.get('/', wrapAsyncController(postController.getPostAll));
 
 // 2. 카테고리별 강의 조회
-router.get('/:category', postController.getPostCategory);
+router.get('/:category', wrapAsyncController(postController.getPostCategory));
 
 // 3. 카테고리+스택별 강의 조회
-router.get('/:category/:stack', postController.getPostStack);
+router.get('/:category/:stack', wrapAsyncController(postController.getPostStack));
 
  
 module.exports = router;
