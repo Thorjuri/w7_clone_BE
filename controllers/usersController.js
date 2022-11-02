@@ -8,7 +8,9 @@ class UsersController {
     signUpUser = async (req, res, next) => {
         try {
             if (req.headers.authorization) {
-                return res.status(400).send('이미 로그인이 되어있습니다.');
+                const err = new Error('이미 로그인이 되어있습니다.');
+                err.statusCode = 401;
+                throw err;
             } else {
                 const { loginId, password } = req.body;
 
@@ -34,7 +36,9 @@ class UsersController {
     loginUser = async (req, res, next) => {
         try {
             if (req.headers.authorization) {
-                return res.status(400).send('이미 로그인이 되어있습니다.');
+                const err = new Error('이미 로그인이 되어있습니다.');
+                err.statusCode = 401;
+                throw err;
             } else {
                 const { loginId, password } = req.body;
 
