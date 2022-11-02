@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 5000;
 const Router = require('./routes/index');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');

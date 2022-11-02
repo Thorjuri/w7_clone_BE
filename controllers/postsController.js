@@ -3,13 +3,13 @@ const PostsService = require('../services/postsService.js');
 class PostsController {
     postsService = new PostsService();
 
-    getPostAll = async (req, res, next) => {
+    getPostAll = async (req, res) => {
         const { userId } = res.locals.user;
         const data = await this.postsService.getPostAll(userId);
         res.status(200).send(data);
     };
 
-    getPostCategory = async (req, res, next) => {
+    getPostCategory = async (req, res) => {
         const { category } = req.params;
         const { userId } = res.locals.user;
 
@@ -17,7 +17,7 @@ class PostsController {
         res.status(200).send(data);
     };
 
-    getPostStack = async (req, res, next) => {
+    getPostStack = async (req, res) => {
         const { category, stack } = req.params;
         const { userId } = res.locals.user;
 
