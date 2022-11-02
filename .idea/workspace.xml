@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="Errorhandler 구현 중">
+    <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/featureController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/featureController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/postsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/postsController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/usersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/usersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/error_handler_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/error_handler_middleware.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repositories/featureRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/featureRepository.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/posts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repositories/postsRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/postsRepository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/postsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/postsService.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/usersService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/usersService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,16 +45,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="errorhandler_middleware" />
-                    <option name="lastUsedInstant" value="1667281368" />
+                    <option name="branchName" value="Likes" />
+                    <option name="lastUsedInstant" value="1666944631" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1667281329" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="YS_s3_prac" />
-                    <option name="lastUsedInstant" value="1667281156" />
+                    <option name="lastUsedInstant" value="1666944630" />
                   </RecentBranch>
                 </list>
               </option>
@@ -70,31 +72,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "/Users/tastekim/Desktop/nodeprac/w7_clone_BE/node_modules/prettier",
-    "settings.editor.selected.configurable": "com.daniel_espinoza.inline_error.settings.InlineErrorConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/tastekim/Desktop/nodeprac/w7_clone_BE/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Node.js.app.js">
     <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="usersController.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/controllers/usersController.js" working-dir="$PROJECT_DIR$/controllers">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.app.js" />
-        <item itemvalue="Node.js.app.js" />
+        <item itemvalue="Node.js.usersController.js" />
       </list>
     </recent_temporary>
   </component>
@@ -112,17 +117,7 @@
       <workItem from="1666973779084" duration="271000" />
       <workItem from="1667020784213" duration="63000" />
       <workItem from="1667020859855" duration="5038000" />
-      <workItem from="1667280991417" duration="12617000" />
-      <workItem from="1667307634481" duration="12333000" />
     </task>
-    <task id="LOCAL-00001" summary="Errorhandler 구현 중">
-      <created>1667314750220</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1667314750220</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,10 +133,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Errorhandler 구현 중" />
-    <option name="LAST_COMMIT_MESSAGE" value="Errorhandler 구현 중" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

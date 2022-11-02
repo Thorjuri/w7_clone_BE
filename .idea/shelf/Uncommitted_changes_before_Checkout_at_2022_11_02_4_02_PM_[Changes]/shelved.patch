@@ -1,0 +1,100 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"946aa9bc-8619-4fd3-b4f4-aa9284c764b0\" name=\"Changes\" comment=\"Errorhandler 구현 중\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/controllers/postsController.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/controllers/postsController.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/controllers/usersController.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/controllers/usersController.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/repositories/featureRepository.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/repositories/featureRepository.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/routes/posts.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/routes/posts.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/routes/users.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/routes/users.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/services/usersService.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/services/usersService.js\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaScript File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"master\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitToolBoxStore\">\n    <option name=\"recentBranches\">\n      <RecentBranches>\n        <option name=\"branchesForRepo\">\n          <list>\n            <RecentBranchesForRepo>\n              <option name=\"branches\">\n                <list>\n                  <RecentBranch>\n                    <option name=\"branchName\" value=\"errorhandler_middleware\" />\n                    <option name=\"lastUsedInstant\" value=\"1667281368\" />\n                  </RecentBranch>\n                  <RecentBranch>\n                    <option name=\"branchName\" value=\"master\" />\n                    <option name=\"lastUsedInstant\" value=\"1667281329\" />\n                  </RecentBranch>\n                  <RecentBranch>\n                    <option name=\"branchName\" value=\"YS_s3_prac\" />\n                    <option name=\"lastUsedInstant\" value=\"1667281156\" />\n                  </RecentBranch>\n                </list>\n              </option>\n              <option name=\"repositoryRootUrl\" value=\"file://$PROJECT_DIR$\" />\n            </RecentBranchesForRepo>\n          </list>\n        </option>\n      </RecentBranches>\n    </option>\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"ProjectId\" id=\"2GkiE8iTuoAUypes6IDVqy3tPes\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ASKED_SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"WebServerToolWindowFactoryState\": \"false\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"prettierjs.PrettierConfiguration.Package\": \"/Users/tastekim/Desktop/nodeprac/w7_clone_BE/node_modules/prettier\",\n    \"settings.editor.selected.configurable\": \"com.daniel_espinoza.inline_error.settings.InlineErrorConfigurable\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  },\n  \"keyToStringList\": {\n    \"DatabaseDriversLRU\": [\n      \"mysql\"\n    ]\n  }\n}]]></component>\n  <component name=\"RunManager\">\n    <configuration name=\"app.js\" type=\"NodeJSConfigurationType\" temporary=\"true\" nameIsGenerated=\"true\" path-to-js-file=\"$PROJECT_DIR$/app.js\" working-dir=\"$PROJECT_DIR$\">\n      <method v=\"2\" />\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Node.js.app.js\" />\n        <item itemvalue=\"Node.js.app.js\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"946aa9bc-8619-4fd3-b4f4-aa9284c764b0\" name=\"Changes\" comment=\"\" />\n      <created>1666938867891</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1666938867891</updated>\n      <workItem from=\"1666938868947\" duration=\"9000\" />\n      <workItem from=\"1666938891909\" duration=\"14287000\" />\n      <workItem from=\"1666967535848\" duration=\"4905000\" />\n      <workItem from=\"1666973779084\" duration=\"271000\" />\n      <workItem from=\"1667020784213\" duration=\"63000\" />\n      <workItem from=\"1667020859855\" duration=\"5038000\" />\n      <workItem from=\"1667280991417\" duration=\"12617000\" />\n      <workItem from=\"1667307634481\" duration=\"12333000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Errorhandler 구현 중\">\n      <created>1667314750220</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1667314750220</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"2\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Errorhandler 구현 중\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Errorhandler 구현 중\" />\n  </component>\n  <component name=\"XSLT-Support.FileAssociations.UIState\">\n    <expand />\n    <select />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 999ada7e5c3e02e15e339bec36a9816ae270c5d2)
++++ b/.idea/workspace.xml	(date 1667372530879)
+@@ -1,15 +1,7 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="Errorhandler 구현 중">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/controllers/postsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/postsController.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/controllers/usersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/usersController.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/repositories/featureRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/repositories/featureRepository.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/routes/posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/posts.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/services/usersService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/usersService.js" afterDir="false" />
+-    </list>
++    <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="try, catch 제거" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -70,23 +62,23 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "nodejs_package_manager_path": "npm",
+-    "prettierjs.PrettierConfiguration.Package": "/Users/tastekim/Desktop/nodeprac/w7_clone_BE/node_modules/prettier",
+-    "settings.editor.selected.configurable": "com.daniel_espinoza.inline_error.settings.InlineErrorConfigurable",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/tastekim/Desktop/nodeprac/w7_clone_BE/node_modules/prettier&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;com.daniel_espinoza.inline_error.settings.InlineErrorConfigurable&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   },
+-  "keyToStringList": {
+-    "DatabaseDriversLRU": [
+-      "mysql"
++  &quot;keyToStringList&quot;: {
++    &quot;DatabaseDriversLRU&quot;: [
++      &quot;mysql&quot;
+     ]
+   }
+-}]]></component>
++}</component>
+   <component name="RunManager">
+     <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/app.js" working-dir="$PROJECT_DIR$">
+       <method v="2" />
+@@ -113,7 +105,7 @@
+       <workItem from="1667020784213" duration="63000" />
+       <workItem from="1667020859855" duration="5038000" />
+       <workItem from="1667280991417" duration="12617000" />
+-      <workItem from="1667307634481" duration="12333000" />
++      <workItem from="1667307634481" duration="13076000" />
+     </task>
+     <task id="LOCAL-00001" summary="Errorhandler 구현 중">
+       <created>1667314750220</created>
+@@ -122,7 +114,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1667314750220</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="try, catch 제거">
++      <created>1667329039748</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1667329039748</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -141,7 +140,8 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Errorhandler 구현 중" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Errorhandler 구현 중" />
++    <MESSAGE value="try, catch 제거" />
++    <option name="LAST_COMMIT_MESSAGE" value="try, catch 제거" />
+   </component>
+   <component name="XSLT-Support.FileAssociations.UIState">
+     <expand />

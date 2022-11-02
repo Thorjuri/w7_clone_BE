@@ -3,15 +3,17 @@ const FeatureService = require('../services/featureService');
 class FeatureController {
     featureService = new FeatureService();
 
-    updateLike = async (req, res, next) => {
+    updateLike = async (req, res) => {
             const { postId } = req.params;
             const { userId } = res.locals.user;
 
             // params 값이 잘못입력되거나 없을 시.
-            if (postId === undefined) {
-                const err = new Error(`좋아요할 강의가 없습니다.`);
-                err.statusCode = 403;
-                throw err;
+            if (postId === false) {
+                throw new Error({
+                    name: 'Controller Error',
+                    statusCode: 404,
+                    message: '좋아요 할 강의가 없습니다.',
+                });
             }
 
             const result = await this.featureService.updateLike(postId, userId);
@@ -20,14 +22,16 @@ class FeatureController {
                 : res.status(201).send(result); // 좋아요 취소 시 send(false)
     };
 
-    updateBucket = async (req, res, next) => {
+    updateBucket = async (req, res) => {
             const { postId } = req.params;
             const { userId } = res.locals.user;
 
             if (postId === undefined) {
-                const err = new Error(`장바구니에 담을 강의가 없습니다.`);
-                err.statusCode = 403;
-                throw err;
+                throw new Error({
+                    name: 'Controller Error',
+                    statusCode: 404,
+                    message: '장바구니에 담을 강의가 없습니다.',
+                });
             }
 
             const result = await this.featureService.updateBucket(
