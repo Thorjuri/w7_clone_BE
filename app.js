@@ -35,32 +35,19 @@ app.get('/test/login', (req,res)=>{
 })
 
 // WebSocket - 실시간 채팅 
-app.get('/chat1', async(req, res) => {
-    // const loginId = res.locals.user.loginId  //현재 로그인된 유저의 loginId 도출
-    // res.header('userId', loginId)  //응답 헤더에 넣어줌
-    res.sendFile(__dirname + '/index.html');
+app.get('/chat1', auth_middleware, async(req, res) => {
+    const { loginId } = res.locals.user  //현재 로그인된 유저의 loginId 도출
+    res.header('userId', loginId)  //응답 헤더에 넣어줌
+    res.sendFile(__dirname + '/chat.html');
 }); 
-
-app.get('/chat2', async(req, res)=> {
-    res.sendFile(__dirname + '/room2.html')
-})
-
-app.get('/chat3', async(req, res)=> {
-    res.sendFile(__dirname + '/room3.html')
-})
 
 
 
 io.on('connection', (socket)=>{
-    socket.on('room2', (msg) => { 
+    socket.on('room1', (msg) => { 
         // response_message로 접속중인 모든 사용자에게 msg 를 담은 정보를 방출한다.
         io.emit('room_all', msg);
     })
-
-        socket.on('room3', (msg) => { 
-            // response_message로 접속중인 모든 사용자에게 msg 를 담은 정보를 방출한다.
-            io.emit('room_all', msg); 
-        });
 
     socket.on('disconnect', async () => {
         console.log('user disconnected');
