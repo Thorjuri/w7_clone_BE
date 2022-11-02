@@ -32,11 +32,6 @@ app.use('/', errorHandlerMiddleware); // 에러 핸들러
 
 
 
-// 로그인 클라이언트연결 테스트
-app.get('/test/login', (req,res)=>{
-    res.sendFile(__dirname + '/login.html');
-})
-
 // WebSocket - 실시간 채팅 
 app.get('/chat1', auth_middleware, async(req, res) => {
     const { loginId } = res.locals.user  //현재 로그인된 유저의 loginId 도출
