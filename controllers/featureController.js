@@ -16,9 +16,15 @@ class FeatureController {
             }
 
             const result = await this.featureService.updateLike(postId, userId);
+            res.header({
+                "access-control-allow-origin" : "*",
+                "access-control-expose-headers" : "Authorization"
+                })
             result
                 ? res.status(201).send(result) // 좋아요 누를 시 send(true)
-                : res.status(201).send(result); // 좋아요 취소 시 send(false)
+                : res.status(201).send(result);// 좋아요 취소 시 send(false)
+                
+                
         } catch (err) {
             next();
         }
@@ -39,6 +45,10 @@ class FeatureController {
                 postId,
                 userId
             );
+            res.header({
+                "access-control-allow-origin" : "*",
+                "access-control-expose-headers" : "Authorization"
+                })
             result
                 ? res.status(201).send(result)
                 : res.status(201).send(result);
