@@ -1,20 +1,59 @@
-const { Posts } = require('../models');
+const { Posts, Likes, Buckets } = require('../models');
 
 class PostsRepository {
 
-    getPostAll = async()=> {
+
+    getLikeslist = async(userId)=> {
+        const data = await Likes.findAll({
+            attributes : ['postId'],
+            where : { userId }
+        })
+        const likeList = data.map((val)=> { return val.postId})
+        return likeList;
+    }
+
+    getBucketslist = async(userId)=> {
+        const data = await Buckets.findAll({
+            attributes : ['postId'],
+            where : { userId }
+        })
+        const bucketList = data.map((val, idx, arr)=> { return val.postId})
+        return bucketList;
+    }
+
+    getPostAll = async(userId)=> {
+        let likes;
+        let buckets;
+        if(userId){
+            likes = await this.getLikeslist(userId)
+            buckets = await this.getBucketslist(userId)
+        }
         const data = await Posts.findAll({});
-        return data;
+        const stacks = data.map((val)=> val.stack)
+        const stacklist = [...new Set(stacks)]
+        return {likes, buckets, stacklist, data} ;
     };
 
-    getPostCategory = async(category)=> {
+    getPostCategory = async(category, userId)=> {
+        let likes;
+        let buckets;
+        if(userId){
+            likes = await this.getLikeslist(userId)
+            buckets = await this.getBucketslist(userId)
+        }
         const data = await Posts.findAll({ where: { category }});
-        return data;
+        return {likes, buckets, data};
     };
 
-    getPostStack = async(category, stack)=> {
+    getPostStack = async(category, stack, userId)=> {
+        let likes;
+        let buckets;
+        if(userId){
+            likes = await this.getLikeslist(userId)
+            buckets = await this.getBucketslist(userId)
+        }
         const data = await Posts.findAll({ where: { category, stack}});
-        return data;
+        return {likes, buckets, data};
     };
 };
 
