@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
+<<<<<<< HEAD
+const port = 5000;
+=======
 const port = 4000;
+>>>>>>> d5163f55dcceef635dd5cbece12bdca7143dc2aa
 const Router = require('./routes/index');
 const errorHandlerMiddleware = require('./middlewares/error_handler_middleware');
 const cookieParser = require('cookie-parser');
@@ -17,7 +21,14 @@ app.use(cookieParser());
 app.use(
     cors({
         origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
+<<<<<<< HEAD
+        allowedHeaders: ['content-Type','Authorization'],
+        exposedHeaders: ['content-Type','Authorization'],
+        methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH','OPTIONS'],
+        credential: 'true'
+=======
         exposedHeaders: 'Authorization', 
+>>>>>>> d5163f55dcceef635dd5cbece12bdca7143dc2aa
     })
 );
 

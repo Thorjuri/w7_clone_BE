@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+const { Posts } = require('../models');
+const { Op } = require('sequelize')
+
+class PostsRepository {
+//aggregate('stack', 'DISTINCT', { plain: false }) // 컬럼의 종류를 1개씩 
+    getPostAll = async()=> {
+=======
 const { Posts, Likes, Buckets } = require('../models');
 
 class PostsRepository {
@@ -28,6 +36,7 @@ class PostsRepository {
             likes = await this.getLikeslist(userId)
             buckets = await this.getBucketslist(userId)
         }
+>>>>>>> d5163f55dcceef635dd5cbece12bdca7143dc2aa
         const data = await Posts.findAll({});
         const stacks = data.map((val)=> val.stack)
         const stacklist = [...new Set(stacks)]

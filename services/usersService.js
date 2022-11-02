@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken'); // 토큰 모듈
+const PostsController = require('../controllers/postsController');
+const { Posts } = require('../models');
 
 require('dotenv').config(); // 닷 env
 
@@ -29,7 +31,7 @@ class UserService {
     checkId = async (loginId) => {
         const findOption = { where: { loginId } };
         const findUser = await this.UserRepository.findUser(findOption);
-        if (findUser) throw Error('해당 아이디는 사용할 수 없습니다');
+        if (findUser) throw new Error('해당 아이디는 사용할 수 없습니다');
         else return findUser;
     };
 
@@ -42,25 +44,78 @@ class UserService {
             const match = bcrypt.compareSync(password, loginUser.password); // 재 암호화 후 동일 시 불리언 반환
             if (match) {
                 const token = jwt.sign(
-                    { userId: loginUser.userId },
+                    { userId: loginUser.userId, loginId: loginUser.loginId },
                     process.env.SECRET_KEY,
                     { expiresIn: '24h' }
                 );
-                return token;
+                return {
+                    token,
+                    userId: loginUser.userId,
+                    loginId: loginUser.loginId,
+                };
             } else throw new Error('아이디 또는 비밀번호가 다릅니다');
         }
     };
 
     getLikesList = async (userId) => {
-        const option = { where: { userId } };
+        const option = {
+            where: { userId },
+            attributes: ['postId', 'userId'],
+            include: {
+                model: Posts,
+                attributes: { exclude: ['postId', 'createdAt', 'deletedAt'] },
+            },
+        };
         const likeslist = await this.UserRepository.getLikesList(option);
-        return likeslist;
+
+        if (likeslist.length) {
+            return likeslist.map((post) => {
+                return {
+                    userId: post.userId,
+                    postId: post.postId,
+                    title: post.Post.title,
+                    tuter: post.Post.tutor,
+                    description: post.Post.description,
+                    category: post.Post.category,
+                    stack: post.Post.category,
+                    price: post.Post.price,
+                    thumbnail: post.Post.thumbnail,
+                    updatedAt: post.Post.updatedAt,
+                };
+            });
+        } else {
+            throw new Error('좋아요에 등록된 강의가 없습니다');
+        }
     };
 
     getBucketsList = async (userId) => {
-        const option = { where: { userId } };
+        const option = {
+            where: { userId },
+            attributes: ['postId', 'userId'],
+            include: {
+                model: Posts,
+                attributes: { exclude: ['postId', 'createdAt', 'deletedAt'] },
+            },
+        };
         const bucketslist = await this.UserRepository.getBucketsList(option);
-        return bucketslist;
+        if (bucketslist.length) {
+            return bucketslist.map((post) => {
+                return {
+                    userId: post.userId,
+                    postId: post.postId,
+                    title: post.Post.title,
+                    tuter: post.Post.tutor,
+                    description: post.Post.description,
+                    category: post.Post.category,
+                    stack: post.Post.category,
+                    price: post.Post.price,
+                    thumbnail: post.Post.thumbnail,
+                    updatedAt: post.Post.updatedAt,
+                };
+            });
+        } else {
+            throw new Error('장바구니에 등록된 강의가 없습니다');
+        }
     };
 }
 

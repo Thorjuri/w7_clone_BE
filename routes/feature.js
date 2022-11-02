@@ -5,7 +5,7 @@ const AuthMiddleware = require('../middlewares/auth_middleware');
 
 const featureController = new FeatureController();
 
-router.patch('/likes/:postId', AuthMiddleware, featureController.updateLike);
-router.patch('/buckets/:postId', AuthMiddleware, featureController.updateBucket);
+router.post('/likes/:postId', AuthMiddleware, featureController.updateLike);
+router.post('/buckets/:postId', AuthMiddleware, featureController.updateBucket);
 
 module.exports = router;

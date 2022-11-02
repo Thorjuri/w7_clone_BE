@@ -25,7 +25,7 @@ class UsersController {
             const { loginId } = req.body;
 
             await this.UserService.checkId(loginId);
-            res.status(200).send('사용가능');
+            res.status(200).send('해당 아이디는 사용 가능합니다');
         } catch (err) {
             next(err);
         }
@@ -42,7 +42,7 @@ class UsersController {
                     loginId,
                     password
                 );
-                res.status(201).send({ token: LoginUser });
+                res.status(201).send(LoginUser);
             }
         } catch (err) {
             next(err);

@@ -8,7 +8,6 @@ const featureRouter = require('./feature');
 
 router.use("/posts", postsRouter);
 router.use('/users', usersRouter);
-// router.use("/buckets", bucketsRouter);
 router.use('/feature', featureRouter);
 
 module.exports = router;
