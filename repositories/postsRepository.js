@@ -30,7 +30,9 @@ class PostsRepository {
             likes = await this.getLikeslist(userId);
             buckets = await this.getBucketslist(userId);
         }
+
         const data = await Posts.findAll({});
+
         const stacks = data.map((val) => val.stack);
         const stacklist = [...new Set(stacks)];
         return { likes, buckets, stacklist, data };
@@ -43,8 +45,11 @@ class PostsRepository {
             likes = await this.getLikeslist(userId);
             buckets = await this.getBucketslist(userId);
         }
+
         const data = await Posts.findAll({ where: { category } });
-        return { likes, buckets, data };
+        const stacks = data.map((val) => val.stack);
+        const stacklist = [...new Set(stacks)];
+        return { likes, buckets, stacklist, data };
     };
 
     getPostStack = async (category, stack, userId) => {

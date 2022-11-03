@@ -53,10 +53,15 @@ class UsersController {
     };
 
     userBuckets = async (req, res, next) => {
-        const { userId } = res.locals.user;
 
-        const bucketslist = await this.UserService.getBucketsList(userId);
-        res.status(200).json(bucketslist);
+        try {
+            const { userId } = res.locals.user;
+            const bucketslist = await this.UserService.getBucketsList(userId);
+            res.status(200).json(bucketslist);
+        } catch (err) {
+            next(err);
+        }
+
     };
 }
 

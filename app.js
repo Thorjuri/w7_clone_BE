@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
+
 const port = 5000;
+
 const Router = require('./routes/index');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -17,10 +19,13 @@ app.use(cookieParser());
 app.use(
     cors({
         origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
-        allowedHeaders: ['content-Type', 'Authorization'],
-        exposedHeaders: ['content-Type', 'Authorization'],
-        methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
-        credential: 'true',
+
+        allowedHeaders: ['content-Type','Authorization'],
+        exposedHeaders: ['content-Type','Authorization'],
+        methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH','OPTIONS'],
+        credential: 'true'
+
+
     })
 );
 
@@ -37,8 +42,10 @@ app.get('/chat1', auth_middleware, async (req, res) => {
     res.sendFile(__dirname + '/chat.html');
 });
 
-io.on('connection', (socket) => {
-    socket.on('room1', (msg) => {
+
+io.on('connection', (socket)=>{
+    socket.on('room1', (msg) => { 
+
         // response_message로 접속중인 모든 사용자에게 msg 를 담은 정보를 방출한다.
         io.emit('room_all', msg);
     });
