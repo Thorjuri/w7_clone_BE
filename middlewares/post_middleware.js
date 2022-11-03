@@ -10,7 +10,7 @@ module.exports = async (req, res, next) => {
     const [authType, authToken] = (authorization || '').split(' ');
 
     if (!authToken || authType !== 'Bearer') {
-        res.locals.user = ''
+        res.locals.user = '';
         next();
     } else {
         const { userId } = jwt.verify(authToken, `${process.env.SECRET_KEY}`);
@@ -19,5 +19,5 @@ module.exports = async (req, res, next) => {
             res.locals.user = user;
             next();
         });
-    }       
+    }
 };

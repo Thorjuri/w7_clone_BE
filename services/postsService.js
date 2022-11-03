@@ -5,6 +5,7 @@ class PostsService {
 
     getPostAll = async (userId) => {
         const data = await this.postsRepository.getPostAll(userId);
+
         const postdata = data.data;
         const likelist = data.likes;
         const bucketList = data.buckets;
@@ -12,8 +13,9 @@ class PostsService {
 
         if (!data.data) {
             throw new Error({
-                name: 'error',
-                message: '강좌가 존재하지 않습니다',
+                name: 'PostService Error',
+                statusCode: 404,
+                message: '강좌가 존재하지 않습니다.',
             });
         }
 
@@ -33,6 +35,7 @@ class PostsService {
             return { stack, postdata };
         } else return { stack, postdata };
         
+
     };
 
     getPostCategory = async (category, userId) => {
@@ -40,12 +43,17 @@ class PostsService {
             category,
             userId
         );
+
         const postdata = data.data;
         const likelist = data.likes;
         const bucketList = data.buckets;
         const stack = data.stacklist;
         if (data.data.length === 0) {
-            throw new Error('강좌가 존재하지 않습니다');
+            throw new Error({
+                name: 'PostService Error',
+                statusCode: 404,
+                message: '강좌가 존재하지 않습니다.',
+            });
         }
 
         if (likelist || bucketList) {
@@ -64,6 +72,7 @@ class PostsService {
             return { stack, postdata };
         } else return { stack, postdata };
         
+
     };
 
     getPostStack = async (category, stack, userId) => {
@@ -73,7 +82,13 @@ class PostsService {
             userId
         );
         if (data.data.length === 0) {
-            throw new Error('강좌가 존재하지 않습니다');
+
+            throw new Error({
+                name: 'PostService Error',
+                statusCode: 404,
+                message: '강좌가 존재하지 않습니다.',
+            });
+
         }
         return data;
     };
