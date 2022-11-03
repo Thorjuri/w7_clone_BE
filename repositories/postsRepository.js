@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 01b369a110d55e8500d7e61a3eac7150445e64ec
 const { Posts, Likes, Buckets } = require('../models');
 
 class PostsRepository {
@@ -30,7 +33,8 @@ class PostsRepository {
             buckets = await this.getBucketslist(userId)
         }
 
-        const data = await Posts.findAll();
+        const data = await Posts.findAll({});
+
         const stacks = data.map((val)=> val.stack)
         const stacklist = [...new Set(stacks)]
         return {likes, buckets, stacklist, data} ;
