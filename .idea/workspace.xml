@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="명시한 에러와 그 외의 에러처리">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9f5ae446-1fad-49d0-82b1-abbaa13df1cc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9f5ae446-1fad-49d0-82b1-abbaa13df1cc.xml" afterDir="false" />
+    <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="에러처리 오류 수정 및 에러 시 response detail 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/featureController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/featureController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/usersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/usersController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/middlewares/error_handler_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/error_handler_middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/postsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/postsService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/usersService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/usersService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
