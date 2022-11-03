@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="에러처리 오류 수정 및 에러 시 response detail 수정">
+    <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="에러처리 오류 수정 및 에러 시 response detail 수정_2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/error_handler_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/error_handler_middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/usersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/usersController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +20,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="errorhandler_middleware" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,6 +34,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="dupcheckId" />
+                    <option name="lastUsedInstant" value="1667461884" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="master" />
                     <option name="lastUsedInstant" value="1667395951" />
@@ -102,6 +106,8 @@
       <workItem from="1667405107443" duration="3264000" />
       <workItem from="1667408546517" duration="3195000" />
       <workItem from="1667454664866" duration="1071000" />
+      <workItem from="1667458038765" duration="1120000" />
+      <workItem from="1667461073987" duration="1226000" />
     </task>
     <task id="LOCAL-00001" summary="명시한 에러와 그 외의 에러처리">
       <created>1667395937181</created>
@@ -124,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667406954346</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="에러처리 오류 수정 및 에러 시 response detail 수정_2">
+      <created>1667457217979</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1667457217979</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +156,20 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="명시한 에러와 그 외의 에러처리" />
-    <option name="LAST_COMMIT_MESSAGE" value="명시한 에러와 그 외의 에러처리" />
+    <MESSAGE value="에러처리 오류 수정 및 에러 시 response detail 수정_2" />
+    <option name="LAST_COMMIT_MESSAGE" value="에러처리 오류 수정 및 에러 시 response detail 수정_2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controllers/usersController.js</url>
+          <line>15</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
