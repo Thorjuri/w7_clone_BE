@@ -12,11 +12,10 @@ class PostsService {
         const stack = data.stacklist;
 
         if (!data.data) {
-            throw new Error({
-                name: 'PostService Error',
-                statusCode: 404,
-                message: '강좌가 존재하지 않습니다.',
-            });
+            const err = new Error(`PostService Error`);
+            err.status = 404;
+            err.message = '강좌가 존재하지 않습니다.';
+            throw err;
         }
 
         if (likelist || bucketList) {
@@ -49,11 +48,10 @@ class PostsService {
         const bucketList = data.buckets;
         const stack = data.stacklist;
         if (data.data.length === 0) {
-            throw new Error({
-                name: 'PostService Error',
-                statusCode: 404,
-                message: '강좌가 존재하지 않습니다.',
-            });
+            const err = new Error(`PostService Error`);
+            err.status = 404;
+            err.message = '강좌가 존재하지 않습니다.';
+            throw err;
         }
 
         if (likelist || bucketList) {
@@ -82,12 +80,10 @@ class PostsService {
             userId
         );
         if (data.data.length === 0) {
-
-            throw new Error({
-                name: 'PostService Error',
-                statusCode: 404,
-                message: '강좌가 존재하지 않습니다.',
-            });
+            const err = new Error(`PostService Error`);
+            err.status = 404;
+            err.message = '강좌가 존재하지 않습니다.';
+            throw err;
 
         }
         return data;

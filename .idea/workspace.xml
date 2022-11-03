@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="명시한 에러와 그 외의 에러처리">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/6f42945f-c335-45b7-a22e-6cef5f2b23da/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9f5ae446-1fad-49d0-82b1-abbaa13df1cc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9f5ae446-1fad-49d0-82b1-abbaa13df1cc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/postsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/postsController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/featureController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/featureController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/usersController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/usersController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middlewares/error_handler_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/error_handler_middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/postsService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/postsService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/usersService.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/usersService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +110,9 @@
       <workItem from="1666973779084" duration="271000" />
       <workItem from="1667020784213" duration="63000" />
       <workItem from="1667020859855" duration="5038000" />
-      <workItem from="1667405107443" duration="1602000" />
+      <workItem from="1667405107443" duration="3264000" />
+      <workItem from="1667408546517" duration="3195000" />
+      <workItem from="1667454664866" duration="1071000" />
     </task>
     <task id="LOCAL-00001" summary="명시한 에러와 그 외의 에러처리">
       <created>1667395937181</created>
@@ -116,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667405542447</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="명시한 에러와 그 외의 에러처리">
+      <created>1667406954346</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1667406954346</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

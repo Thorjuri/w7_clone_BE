@@ -6,6 +6,11 @@ module.exports = (err, req, res, next) => {
             name: err.name,
             status: 500,
             errorMessage: err.message,
+            Request: {
+                header: req.headers,
+                params: req.params,
+                body: req.body,
+            },
             errorStack: err.stack,
         });
     } else {
