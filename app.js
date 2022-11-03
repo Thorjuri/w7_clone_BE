@@ -1,10 +1,8 @@
 const express = require('express');
 const app = express();
-<<<<<<< HEAD
+
 const port = 5000;
-=======
-const port = 4000;
->>>>>>> d5163f55dcceef635dd5cbece12bdca7143dc2aa
+
 const Router = require('./routes/index');
 const errorHandlerMiddleware = require('./middlewares/error_handler_middleware');
 const cookieParser = require('cookie-parser');
@@ -21,14 +19,11 @@ app.use(cookieParser());
 app.use(
     cors({
         origin: '*', // 모든 출처 허용 옵션. true 를 써도 된다.
-<<<<<<< HEAD
         allowedHeaders: ['content-Type','Authorization'],
         exposedHeaders: ['content-Type','Authorization'],
         methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH','OPTIONS'],
         credential: 'true'
-=======
-        exposedHeaders: 'Authorization', 
->>>>>>> d5163f55dcceef635dd5cbece12bdca7143dc2aa
+
     })
 );
 
@@ -52,8 +47,6 @@ app.get('/chat1', auth_middleware, async(req, res) => {
     res.sendFile(__dirname + '/chat.html');
 }); 
 
-
-
 io.on('connection', (socket)=>{
     socket.on('room1', (msg) => { 
         // response_message로 접속중인 모든 사용자에게 msg 를 담은 정보를 방출한다.
@@ -64,7 +57,6 @@ io.on('connection', (socket)=>{
         console.log('user disconnected');
     });
 });
-
 
 http.listen(port, () => {
     console.log(`${port}번 포트로 서버 실행`);

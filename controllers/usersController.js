@@ -63,7 +63,6 @@ class UsersController {
     userBuckets = async (req, res, next) => {
         try {
             const { userId } = res.locals.user;
-
             const bucketslist = await this.UserService.getBucketsList(userId);
             res.status(200).json(bucketslist);
         } catch (err) {

@@ -54,6 +54,16 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
+            isHeart: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false,
+                defaultValue:false
+            },
+            isCart: {
+                type: DataTypes.BOOLEAN,
+                allowNull: false,
+                defaultValue:false
+            },
         },
         {
             sequelize,
