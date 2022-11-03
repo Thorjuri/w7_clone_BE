@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 01b369a110d55e8500d7e61a3eac7150445e64ec
 const { Posts, Likes, Buckets } = require('../models');
 
 class PostsRepository {
