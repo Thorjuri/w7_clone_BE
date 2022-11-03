@@ -976,5 +976,270 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <user id="284" parent="1" name="rdsadmin">
       <Host>localhost</Host>
     </user>
+    <table id="285" parent="275" name="Buckets">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="286" parent="275" name="Likes">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="287" parent="275" name="Posts">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <table id="288" parent="275" name="Users">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="289" parent="285" name="bucketId">
+      <AutoIncrement>26</AutoIncrement>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="290" parent="285" name="userId">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="291" parent="285" name="postId">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="292" parent="285" name="createdAt">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="293" parent="285" name="updatedAt">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="294" parent="285" name="Buckets_ibfk_1">
+      <ColNames>userId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>userId</RefColNames>
+      <RefTableName>Users</RefTableName>
+    </foreign-key>
+    <foreign-key id="295" parent="285" name="Buckets_ibfk_2">
+      <ColNames>postId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>postId</RefColNames>
+      <RefTableName>Posts</RefTableName>
+    </foreign-key>
+    <index id="296" parent="285" name="PRIMARY">
+      <ColNames>bucketId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="297" parent="285" name="userId">
+      <ColNames>userId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="298" parent="285" name="postId">
+      <ColNames>postId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="299" parent="285" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="300" parent="286" name="likeId">
+      <AutoIncrement>143</AutoIncrement>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="301" parent="286" name="userId">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="302" parent="286" name="postId">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="303" parent="286" name="createdAt">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="304" parent="286" name="updatedAt">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="305" parent="286" name="Likes_ibfk_1">
+      <ColNames>userId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>userId</RefColNames>
+      <RefTableName>Users</RefTableName>
+    </foreign-key>
+    <foreign-key id="306" parent="286" name="Likes_ibfk_2">
+      <ColNames>postId</ColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>postId</RefColNames>
+      <RefTableName>Posts</RefTableName>
+    </foreign-key>
+    <index id="307" parent="286" name="PRIMARY">
+      <ColNames>likeId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="308" parent="286" name="userId">
+      <ColNames>userId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="309" parent="286" name="postId">
+      <ColNames>postId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="310" parent="286" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="311" parent="287" name="postId">
+      <AutoIncrement>23</AutoIncrement>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="312" parent="287" name="title">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="313" parent="287" name="tutor">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="314" parent="287" name="description">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="315" parent="287" name="category">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="316" parent="287" name="stack">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="317" parent="287" name="price">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <column id="318" parent="287" name="thumbnail">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+    </column>
+    <column id="319" parent="287" name="isHeart">
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <column id="320" parent="287" name="isCart">
+      <DataType>tinyint(1)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>10</Position>
+    </column>
+    <column id="321" parent="287" name="createdAt">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>11</Position>
+    </column>
+    <column id="322" parent="287" name="updatedAt">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>12</Position>
+    </column>
+    <column id="323" parent="287" name="deletedAt">
+      <DataType>datetime|0s</DataType>
+      <Position>13</Position>
+    </column>
+    <index id="324" parent="287" name="PRIMARY">
+      <ColNames>postId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="325" parent="287" name="title">
+      <ColNames>title</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="326" parent="287" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="327" parent="287" name="title">
+      <UnderlyingIndexName>title</UnderlyingIndexName>
+    </key>
+    <column id="328" parent="288" name="userId">
+      <AutoIncrement>4</AutoIncrement>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="329" parent="288" name="loginId">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="330" parent="288" name="password">
+      <DataType>varchar(255)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="331" parent="288" name="createdAt">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="332" parent="288" name="updatedAt">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="333" parent="288" name="deletedAt">
+      <DataType>datetime|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <index id="334" parent="288" name="PRIMARY">
+      <ColNames>userId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="335" parent="288" name="loginId">
+      <ColNames>loginId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="336" parent="288" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <key id="337" parent="288" name="loginId">
+      <UnderlyingIndexName>loginId</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>

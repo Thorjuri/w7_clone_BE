@@ -26,36 +26,32 @@ class UserService {
             );
             return signUpUser;
         } else {
-            throw new Error({
-                name: 'UserService Error',
-                statusCode: 500,
-                message: '데이터 저장 과정 중 에러 발생.',
-            });
-        };
+            const err = new Error(`UserService Error`);
+            err.status = 500;
+            err.message = '데이터 저장 과정 중 에러 발생';
+            throw err;
+        }
     };
 
     checkId = async (loginId) => {
         const findOption = { where: { loginId } };
         const findUser = await this.UserRepository.findUser(findOption);
         if (findUser) {
-            throw new Error({
-                name: 'UserService Error',
-                statusCode: 400,
-                message: '해당 아이디는 사용할 수 없습니다.',
-            });
-        }
-        else return findUser;
+            const err = new Error(`UserService Error`);
+            err.status = 400;
+            err.message = '해당 아이디는 사용할 수 없습니다.';
+            throw err;
+        } else return findUser;
     };
 
     loginUser = async (loginId, password) => {
         const option = { where: { loginId } };
         const loginUser = await this.UserRepository.loginUser(option);
         if (!loginUser) {
-            throw new Error({
-                name: 'UserService Error',
-                statusCode: 400,
-                message: '아이디 또는 비밀번호를 확인해주세요.',
-            });
+            const err = new Error(`UserService Error`);
+            err.status = 400;
+            err.message = '아이디 또는 비밀번호를 확인해주세요.';
+            throw err;
         } else {
             const match = bcrypt.compareSync(password, loginUser.password); // 재 암호화 후 동일 시 불리언 반환
             if (match) {
@@ -70,11 +66,10 @@ class UserService {
                     loginId: loginUser.loginId,
                 };
             } else {
-                throw new Error({
-                    name: 'UserService Error',
-                    statusCode: 400,
-                    message: '아이디 또는 비밀번호가 다릅니다.',
-                });
+                const err = new Error(`UserService Error`);
+                err.status = 400;
+                err.message = '아이디 또는 비밀번호가 다릅니다.';
+                throw err;
             }
         }
     };
@@ -106,11 +101,10 @@ class UserService {
                 };
             });
         } else {
-            throw new Error({
-                name: 'UserService Error',
-                statusCode: 404,
-                message: '좋아요에 등록된 강의가 없습니다.',
-            });
+            const err = new Error(`UserService Error`);
+            err.status = 404;
+            err.message = '좋아요에 등록된 강의가 없습니다.';
+            throw err;
         }
     };
 
@@ -140,11 +134,10 @@ class UserService {
                 };
             });
         } else {
-            throw new Error({
-                name: 'UserService Error',
-                statusCode: 404,
-                message: '장바구니에 등록된 강의가 없습니다.',
-            });
+            const err = new Error(`UserService Error`);
+            err.status = 404;
+            err.message = '장바구니에 등록된 강의가 없습니다.';
+            throw err;
         }
     };
 }

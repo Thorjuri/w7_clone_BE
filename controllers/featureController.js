@@ -9,11 +9,10 @@ class FeatureController {
 
             // params 값이 잘못입력되거나 없을 시.
             if (postId === false) {
-                throw new Error({
-                    name: 'Controller Error',
-                    statusCode: 404,
-                    message: '좋아요 할 강의가 없습니다.',
-                });
+                const err = new Error(`FeatureController Error`);
+                err.status = 404;
+                err.message = '좋아요 할 강의가 없습니다.'
+                throw err;
             }
 
             const result = await this.featureService.updateLike(postId, userId);
@@ -31,11 +30,10 @@ class FeatureController {
             const { userId } = res.locals.user;
 
             if (postId === undefined) {
-                throw new Error({
-                    name: 'Controller Error',
-                    statusCode: 404,
-                    message: '장바구니에 담을 강의가 없습니다.',
-                });
+                const err = new Error(`FeatureController Error`);
+                err.status = 404;
+                err.message = '장바구니에 담을 강의가 없습니다.'
+                throw err;
             }
 
             const result = await this.featureService.updateBucket(
