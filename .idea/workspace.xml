@@ -1,29 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/w7_clone_BE.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/controllers/featureController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/repositories/featureRepository.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/feature.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/featureService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc.js" afterDir="false" />
+    <list default="true" id="946aa9bc-8619-4fd3-b4f4-aa9284c764b0" name="Changes" comment="명시한 에러와 그 외의 에러처리">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/bucketsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/likesController.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/error_handler_middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/error_handler_middleware.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/buckets.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/buckets.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/likes.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/likes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/bucketsRepository.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/repositories/likesRepository.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/buckets.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/likes.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/bucketsService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/likesService.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/postsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/postsController.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +21,13 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="errorhandler_middleware" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -54,12 +36,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="Likes" />
-                    <option name="lastUsedInstant" value="1666944631" />
-                  </RecentBranch>
-                  <RecentBranch>
                     <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1666944630" />
+                    <option name="lastUsedInstant" value="1667395951" />
                   </RecentBranch>
                 </list>
               </option>
@@ -74,6 +52,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2GkiE8iTuoAUypes6IDVqy3tPes" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -119,7 +100,23 @@
       <workItem from="1666973779084" duration="271000" />
       <workItem from="1667020784213" duration="63000" />
       <workItem from="1667020859855" duration="5038000" />
+      <workItem from="1667405107443" duration="1602000" />
     </task>
+    <task id="LOCAL-00001" summary="명시한 에러와 그 외의 에러처리">
+      <created>1667395937181</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1667395937181</updated>
+    </task>
+    <task id="LOCAL-00002" summary="명시한 에러와 그 외의 에러처리">
+      <created>1667405542447</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1667405542447</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +132,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="명시한 에러와 그 외의 에러처리" />
+    <option name="LAST_COMMIT_MESSAGE" value="명시한 에러와 그 외의 에러처리" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

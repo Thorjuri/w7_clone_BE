@@ -18,5 +18,9 @@
         </introspection-scope>
       </schema-mapping>
     </data-source>
+    <data-source name="rds-7week" uuid="9f5ae446-1fad-49d0-82b1-abbaa13df1cc">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <schema-mapping />
+    </data-source>
   </component>
 </project>
